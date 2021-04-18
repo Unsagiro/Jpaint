@@ -13,20 +13,48 @@ import view.interfaces.PaintCanvasBase;
 import view.interfaces.IUiModule;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.EnumMap;
 
 public class Main {
     public static void main(String[] args){
         PaintCanvasBase paintCanvas = new PaintCanvas();
+        
+        paintCanvas.addMouseListener(args);
+
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // For example purposes only; remove all lines below from your final project.
-
+/*
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -48,5 +76,6 @@ public class Main {
         graphics2d.setStroke(stroke);
         graphics2d.setColor(Color.BLACK);
         graphics2d.drawRect(7, 8, 210, 410);
-    }
+    }*/
+}
 }
