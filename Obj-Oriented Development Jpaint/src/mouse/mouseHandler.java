@@ -4,16 +4,23 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
+import commands.CommandHistory;
+import commands.ICommand;
+import commands.RectangleCommand;
 import view.interfaces.PaintCanvasBase;
 
 public class mouseHandler extends MouseAdapter {
-
+	
+	ICommand command;
 	private PointJpaint startPoint;
 	private PointJpaint endPoint;
 	private int width;
 	private int height;
 	private PaintCanvasBase paintCanvas;
+	
+	
 	
 	public mouseHandler(PaintCanvasBase paintCanvas){
 	        this.paintCanvas = paintCanvas;
@@ -33,15 +40,22 @@ public class mouseHandler extends MouseAdapter {
 	
 		int x = e.getX();
 		int y = e.getY();
+		
+	
 		PointJpaint endPoint = new PointJpaint(x,y);
 		width = (int) Math.abs(((startPoint.getX())) - (endPoint.getX()));
 		height = (int) Math.abs(startPoint.getY() - endPoint.getY());
 		
-		  Graphics2D graphics2d = paintCanvas.getGraphics2D();
-	        graphics2d.setColor(Color.GREEN);
-	        graphics2d.fillRect((int)startPoint.getX(),(int) startPoint.getY(), width, height);
-	
-	
+		
+		command = new RectangleCommand(paintCanvas, startPoint, width, height);
+		  
+		try {
+			command.run();
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		} 	
+	     
 
 }
 	
