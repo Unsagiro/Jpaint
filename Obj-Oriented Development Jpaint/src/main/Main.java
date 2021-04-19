@@ -36,13 +36,13 @@ public class Main {
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
         IJPaintController controller = new JPaintController(uiModule, appState);
-        controller.setup();
+        
         mouseHandler mouseHandler = new mouseHandler(paintCanvas);
         
         paintCanvas.addMouseListener(mouseHandler);
         
         
-      
+        controller.setup();
         
       
 
