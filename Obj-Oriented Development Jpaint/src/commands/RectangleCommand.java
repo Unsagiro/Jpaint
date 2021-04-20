@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.List;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Stack;
 
+import model.shapesList;
 import mouse.PointJpaint;
 import view.interfaces.PaintCanvasBase;
 
@@ -14,7 +16,8 @@ public class RectangleCommand implements ICommand, IUndoable {
 	 PaintCanvasBase paintCanvas;
 	 PointJpaint startPoint;
 	 int width;
-	int height;
+	 int height;
+	
 	
 //	RectangleCommand[] RecList = new RectangleCommand[100000];
 	
@@ -23,6 +26,7 @@ public class RectangleCommand implements ICommand, IUndoable {
 	        this.startPoint = startPoint;
 	        this.width =  width;
 	        this.height = height;
+	       
 	    }
 	
 	@Override
@@ -32,8 +36,11 @@ public class RectangleCommand implements ICommand, IUndoable {
 		graphics2d = paintCanvas.getGraphics2D();
         graphics2d.setColor(Color.GREEN);
         graphics2d.fillRect((int)startPoint.getX(),(int) startPoint.getY(), width, height);
-       
+        shapesList.shapes.add(this);
 		CommandHistory.add(this);
+		
+		
+		
 	}
 	
 	@Override
@@ -42,17 +49,26 @@ public class RectangleCommand implements ICommand, IUndoable {
 		graphics2d = paintCanvas.getGraphics2D();
         graphics2d.setColor(Color.WHITE);
         graphics2d.fillRect(0,0, 1920, 1080);
-        
-       
-		
-        
+        if (! shapesList.shapes.isEmpty()) 
+        	{
+        		shapesList.shapes.remove(shapesList.shapes.size() - 1 );
+        	}
+        for (RectangleCommand rec : shapesList.shapes)
+        		{
+        		graphics2d = paintCanvas.getGraphics2D();
+        		graphics2d.setColor(Color.GREEN);
+        		graphics2d.fillRect((int) rec.startPoint.getX(),(int) rec.startPoint.getY(), rec.width, rec.height);
+        		}
 	}
+        
+	
 	
 	@Override
 	public void redo() {
 		graphics2d = paintCanvas.getGraphics2D();
         graphics2d.setColor(Color.GREEN);
         graphics2d.fillRect((int)startPoint.getX(),(int) startPoint.getY(), width, height);
+        shapesList.shapes.add(this);
 		
 	}
 }
