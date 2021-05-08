@@ -4,6 +4,7 @@ import controller.IJPaintController;
 import controller.JPaintController;
 import model.ShapeColor;
 import model.ShapeType;
+import model.shapeState;
 import model.persistence.ApplicationState;
 import mouse.mouseHandler;
 import view.gui.Gui;
@@ -24,19 +25,12 @@ public class Main {
     public static void main (String[] args){
         PaintCanvasBase paintCanvas = new PaintCanvas();
         
-       
-        
-     
-        
-        
-      
-        
-        
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
+       
         IJPaintController controller = new JPaintController(uiModule, appState);
-        
+        shapeState.stateHolder(appState);
         mouseHandler mouseHandler = new mouseHandler(paintCanvas);
         
         paintCanvas.addMouseListener(mouseHandler);

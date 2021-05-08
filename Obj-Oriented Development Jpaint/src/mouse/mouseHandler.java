@@ -8,7 +8,8 @@ import java.io.IOException;
 
 import commands.CommandHistory;
 import commands.ICommand;
-import commands.RectangleCommand;
+import commands.ShapeDrawCommand;
+import model.shapeState;
 import view.interfaces.PaintCanvasBase;
 
 public class mouseHandler extends MouseAdapter {
@@ -38,16 +39,24 @@ public class mouseHandler extends MouseAdapter {
 	
 	public void mouseReleased(MouseEvent e) {
 	
-		int x = e.getX();
-		int y = e.getY();
+		int x2 = e.getX();
+		int y2 = e.getY();
 		
 	
-		PointJpaint endPoint = new PointJpaint(x,y);
+		endPoint = new PointJpaint(x2,y2);
+		//System.out.println(endPoint.toString());
 		width = (int) Math.abs(((startPoint.getX())) - (endPoint.getX()));
 		height = (int) Math.abs(startPoint.getY() - endPoint.getY());
 		
+		shapeState shape = new shapeState(null, null, null, null);
+		try {
+			shape.run();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		
-		command = new RectangleCommand(paintCanvas, startPoint, width, height);
+		command = new ShapeDrawCommand(paintCanvas, startPoint,endPoint, width, height, shape);
 		  
 		try {
 			command.run();

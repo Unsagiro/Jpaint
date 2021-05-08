@@ -26,3 +26,4 @@ public interface IApplicationState {
 
     MouseMode getActiveMouseMode();
 }
+

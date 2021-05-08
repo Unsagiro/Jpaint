@@ -21,5 +21,9 @@ public class PointJpaint {
 		  	}
 	
 
+	 public String toString()
+	 		{
+		 		return (x + "," + y);
+	 		}
 
 }

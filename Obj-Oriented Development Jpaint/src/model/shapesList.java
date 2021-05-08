@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
-import commands.RectangleCommand;
+
+import commands.ShapeDrawCommand;
 
 public class shapesList {
 
-	public static ArrayList<RectangleCommand> shapes = new ArrayList<RectangleCommand>();
+	public static ArrayList<ShapeDrawCommand> shapes = new ArrayList<ShapeDrawCommand>();
 	
 }
