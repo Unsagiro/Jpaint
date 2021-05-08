@@ -34,13 +34,44 @@ public class triangleStrategy implements IShapeStrategy {
 		
 		 
 		  graphics2d = paintCanvas.getGraphics2D();
-	      //graphics2d.setColor(enumMapColor.colorMap(shapeState.primaryColor));
-		  graphics2d.setColor(Color.GREEN);
-	      graphics2d.fillPolygon(xPoints, yPoints, 3);
-	      graphics2d.setStroke(new BasicStroke(5));
-	      
-	      //graphics2d.fillRect((int)startPoint.getX(),(int) startPoint.getY(), width, height);
-		
+	  
+		  
+		  switch(shapeState.shapeShading)
+		  	{
+		  
+		  		case OUTLINE_AND_FILLED_IN:
+			  
+		  			graphics2d.setColor(enumMapColor.colorMap(shapeState.primaryColor));
+		  			graphics2d.fillPolygon(xPoints, yPoints, 3);
+		  			graphics2d.setStroke(new BasicStroke(5));
+		  			graphics2d.setColor(enumMapColor.colorMap(shapeState.secondaryColor));
+		  			graphics2d.drawPolygon(xPoints, yPoints, 3);
+		  			
+		  			break;
+		  			
+		  		case FILLED_IN:
+		  			
+		  			graphics2d.setColor(enumMapColor.colorMap(shapeState.primaryColor));
+		  			graphics2d.fillPolygon(xPoints, yPoints, 3);
+		  			graphics2d.setStroke(new BasicStroke(5));
+		  			graphics2d.setColor(enumMapColor.colorMap(shapeState.primaryColor));
+		  			graphics2d.drawPolygon(xPoints, yPoints, 3);
+		  			
+		  			break;
+		  		
+		  		case OUTLINE:
+		  			
+		  			graphics2d.setStroke(new BasicStroke(5));
+		  			graphics2d.setColor(enumMapColor.colorMap(shapeState.primaryColor));
+		  			graphics2d.drawPolygon(xPoints, yPoints, 3);
+		  			
+		  			
+		  			break;
+		  			
+		  			
+		  			
+		  			
+		  	}
 		
 		
 	}

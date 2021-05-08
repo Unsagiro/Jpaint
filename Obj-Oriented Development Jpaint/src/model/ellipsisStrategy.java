@@ -15,20 +15,44 @@ public class ellipsisStrategy implements IShapeStrategy {
 		// TODO Auto-generated method stub
 
 		
+		
 		graphics2d = paintCanvas.getGraphics2D();
-		graphics2d.setColor(Color.GREEN);
-		graphics2d.fillOval((int)startPoint.getX(),(int)startPoint.getY(), width, height);
-		graphics2d.setStroke(new BasicStroke(5));
+		
+		
+		switch(shapeState.shapeShading) 
+			{
+		
+				case OUTLINE_AND_FILLED_IN:
+		
+					graphics2d.setColor(enumMapColor.colorMap(shapeState.primaryColor));
+					graphics2d.fillOval((int)startPoint.getX(),(int)startPoint.getY(), width, height);
+					graphics2d.setStroke(new BasicStroke(5));
+					graphics2d.setColor(enumMapColor.colorMap(shapeState.secondaryColor));
+					graphics2d.drawOval((int)startPoint.getX(),(int)startPoint.getY(), width, height);
+		
+					break;
+		
+				case FILLED_IN:
+			
+					graphics2d.setColor(enumMapColor.colorMap(shapeState.primaryColor));
+					graphics2d.fillOval((int)startPoint.getX(),(int)startPoint.getY(), width, height);
+					graphics2d.setStroke(new BasicStroke(5));
+					graphics2d.setColor(enumMapColor.colorMap(shapeState.primaryColor));
+					graphics2d.drawOval((int)startPoint.getX(),(int)startPoint.getY(), width, height);
+		
+					break;
+				
+				case OUTLINE:
+				
+					graphics2d.setStroke(new BasicStroke(5));
+					graphics2d.setColor(enumMapColor.colorMap(shapeState.secondaryColor));
+					graphics2d.drawOval((int)startPoint.getX(),(int)startPoint.getY(), width, height);
+					
+					break;
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
+		}
 		
 	}
 
