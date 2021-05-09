@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import commands.CommandHistory;
 import commands.ICommand;
+import commands.MoveCommand;
+import commands.SelectCommand;
 import commands.ShapeDrawCommand;
 import model.shapeState;
 import view.interfaces.PaintCanvasBase;
@@ -48,7 +50,7 @@ public class mouseHandler extends MouseAdapter {
 		width = (int) Math.abs(((startPoint.getX())) - (endPoint.getX()));
 		height = (int) Math.abs(startPoint.getY() - endPoint.getY());
 		
-		shapeState shape = new shapeState(null, null, null, null);
+		shapeState shape = new shapeState(null, null, null, null,null);
 		try {
 			shape.run();
 		} catch (IOException e2) {
@@ -56,8 +58,43 @@ public class mouseHandler extends MouseAdapter {
 			e2.printStackTrace();
 		}
 		
-		command = new ShapeDrawCommand(paintCanvas, startPoint,endPoint, width, height, shape);
-		  
+		
+		
+		
+		switch(shape.mouseMode) 
+			{
+		
+				case DRAW:
+					
+					command = new ShapeDrawCommand(paintCanvas, startPoint,endPoint, width, height, shape);
+					
+					break;
+				
+				case SELECT:
+					command = new SelectCommand(startPoint, endPoint);
+					
+					break;
+				
+				case MOVE:
+					
+					command = new MoveCommand(startPoint, endPoint);
+					
+
+				default:
+					
+					break;
+		
+		
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		try {
 			command.run();
 		} catch (IOException e1) {

@@ -15,15 +15,17 @@ public class shapeState implements IShapeState{
 	public ShapeColor primaryColor;
 	public ShapeColor secondaryColor;
 	public ShapeShadingType shapeShading;
+	public MouseMode mouseMode;
 	
 	
 	
-	public  shapeState(ShapeType shapeShape, ShapeColor primaryColor, ShapeColor secondaryColor, ShapeShadingType shapeShading){
+	public  shapeState(ShapeType shapeShape, ShapeColor primaryColor, ShapeColor secondaryColor, ShapeShadingType shapeShading, MouseMode mouseMode){
 		
 	this.shapeShape = shapeShape;
 	this.primaryColor = primaryColor;
 	this.secondaryColor = secondaryColor;
 	this.shapeShading = shapeShading;
+	this.mouseMode = mouseMode;
 		
 	}
 	
@@ -41,5 +43,6 @@ public class shapeState implements IShapeState{
 		 primaryColor = appState.getActivePrimaryColor();
 		 secondaryColor = appState.getActiveSecondaryColor();
 		 shapeShading = appState.getActiveShapeShadingType();
+		 mouseMode = appState.getActiveMouseMode();
 	}
 }

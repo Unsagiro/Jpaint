@@ -18,12 +18,12 @@ import model.whatShapeStrategy;
 
 public class ShapeDrawCommand implements ICommand, IUndoable {
 	 Graphics2D graphics2d;
-	private PaintCanvasBase paintCanvas;
-	 private PointJpaint startPoint;
-	private PointJpaint endPoint;
-	private int width;
-	private int height;
-	private shapeState shape;
+	public PaintCanvasBase paintCanvas;
+	public PointJpaint startPoint;
+	public PointJpaint endPoint;
+	public int width;
+	public int height;
+	public shapeState shape;
 	 
 	
 	
