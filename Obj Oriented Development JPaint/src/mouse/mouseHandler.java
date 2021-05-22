@@ -77,7 +77,7 @@ public class mouseHandler extends MouseAdapter {
 				
 				case MOVE:
 					
-					command = new MoveCommand(startPoint, endPoint);
+					command = new MoveCommand(paintCanvas, startPoint, endPoint);
 					
 
 				default:

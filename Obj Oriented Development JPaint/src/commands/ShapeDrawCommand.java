@@ -73,12 +73,13 @@ public class ShapeDrawCommand implements ICommand, IUndoable {
 	@Override
 	public void undo() {
 		
-		graphics2d = paintCanvas.getGraphics2D();
-        graphics2d.setColor(Color.WHITE);
-        graphics2d.fillRect(0,0, 1920, 1080);
         if (! shapesList.shapes.isEmpty()) 
         	{
         		shapesList.shapes.remove(shapesList.shapes.size() - 1 );
+        		System.out.println("i am undo");
+        		graphics2d = paintCanvas.getGraphics2D();
+                graphics2d.setColor(Color.WHITE);
+                graphics2d.fillRect(0,0, 1920, 1080);
         	}
         for (ShapeDrawCommand command : shapesList.shapes)
         		{
@@ -101,12 +102,15 @@ public class ShapeDrawCommand implements ICommand, IUndoable {
         graphics2d.fillRect((int)startPoint.getX(),(int) startPoint.getY(), width, height);
         ;*/
 		whatShapeStrategy newStrat = new whatShapeStrategy();
+		System.out.println("i am  redo");
 		try {
 			newStrat.whatShapeStrategyChoose(paintCanvas, startPoint, endPoint, width, height, shape);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
+	
 		shapesList.shapes.add(this);
 	}
 }

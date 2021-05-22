@@ -1,6 +1,7 @@
 package model;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import model.interfaces.IShapeState;
 import model.persistence.ApplicationState;
@@ -16,7 +17,7 @@ public class shapeState implements IShapeState{
 	public ShapeColor secondaryColor;
 	public ShapeShadingType shapeShading;
 	public MouseMode mouseMode;
-	
+	public UUID shapeID;
 	
 	
 	public  shapeState(ShapeType shapeShape, ShapeColor primaryColor, ShapeColor secondaryColor, ShapeShadingType shapeShading, MouseMode mouseMode){
