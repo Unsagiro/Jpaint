@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 
 import commands.CopyCommand;
+import commands.DeleteCommand;
 import commands.PasteCommand;
 import commands.RedoCommand;
 import commands.UndoCommand;
@@ -45,6 +46,14 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.PASTE,() -> {
 			try {
 				new PasteCommand().run();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+        uiModule.addEvent(EventName.DELETE, () -> {
+			try {
+				new DeleteCommand().run();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
