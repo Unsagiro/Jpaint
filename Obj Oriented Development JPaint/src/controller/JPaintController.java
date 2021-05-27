@@ -1,5 +1,9 @@
 package controller;
 
+import java.io.IOException;
+
+import commands.CopyCommand;
+import commands.PasteCommand;
 import commands.RedoCommand;
 import commands.UndoCommand;
 import model.IApplicationState;
@@ -29,5 +33,28 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, () -> applicationState.setActiveStartAndEndPointMode());
         uiModule.addEvent(EventName.UNDO, () -> new UndoCommand().run());
         uiModule.addEvent(EventName.REDO, () -> new RedoCommand().run());
+        
+        uiModule.addEvent(EventName.COPY,() -> {
+			try {
+				new CopyCommand().run();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+        uiModule.addEvent(EventName.PASTE,() -> {
+			try {
+				new PasteCommand().run();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+        
+        
+        
+        
+        
+        
     }
 }

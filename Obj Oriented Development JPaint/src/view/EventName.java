@@ -42,7 +42,11 @@ public enum EventName {
 	public String toString() {
 		return "REDO";
 	}},
-	COPY,
+	COPY{
+		public String toString() {
+			return "COPY";
+		}
+	},
 	PASTE,
 	DELETE,
 	GROUP,

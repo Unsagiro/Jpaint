@@ -2,6 +2,7 @@ package main;
 
 import controller.IJPaintController;
 import controller.JPaintController;
+import model.ClearCanvas;
 import model.IShapeListObserver;
 import model.IShapeListSubject;
 import model.ShapeColor;
@@ -42,6 +43,8 @@ public class Main {
         shapeState.stateHolder(appState);
         
         mouseHandler mouseHandler = new mouseHandler(paintCanvas);
+        
+        ClearCanvas.canvasForClear(paintCanvas);
         paintCanvas.addMouseListener(mouseHandler);
         
         

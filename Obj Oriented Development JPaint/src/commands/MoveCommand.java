@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.ClearCanvas;
 import model.selectedList;
 import model.shapeState;
 import model.shapesList;
@@ -19,8 +20,8 @@ public class MoveCommand implements ICommand, IUndoable {
 	public PointJpaint startPoint;
 	public PointJpaint endPoint;
 	Graphics2D graphics2d;
-	public   ArrayList<ShapeDrawCommand> oldSelectedShapesLocal = new  ArrayList<ShapeDrawCommand>();
-	public   ArrayList<ShapeDrawCommand> newSelectedShapesLocal = new  ArrayList<ShapeDrawCommand>();
+	   ArrayList<ShapeDrawCommand> oldSelectedShapesLocal = new  ArrayList<ShapeDrawCommand>();
+	  ArrayList<ShapeDrawCommand> newSelectedShapesLocal = new  ArrayList<ShapeDrawCommand>();
 	public double x;
 	public double y;
 	
@@ -57,17 +58,18 @@ public class MoveCommand implements ICommand, IUndoable {
 				
 		
 		
-		graphics2d = paintCanvas.getGraphics2D();                            // clear the canvas
-		graphics2d.setColor(Color.WHITE);
-		graphics2d.fillRect(0,0, 1920, 1080);
 		
 		
 				 			
 		shapesListGetter.getShapesList().removeAllShapes(oldSelectedShapesLocal);
+		ClearCanvas.clearCanvas();
 		shapesListGetter.getShapesList().addAllShapes(newSelectedShapesLocal);
 				 				
 				 			
 		selectedList.selected.removeAll(oldSelectedShapesLocal);
+		
+	
+		
 		selectedList.selected.addAll(newSelectedShapesLocal);
 
     		

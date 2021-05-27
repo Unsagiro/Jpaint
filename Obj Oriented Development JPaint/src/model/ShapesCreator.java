@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.io.IOException;
 
 import commands.ShapeDrawCommand;
@@ -12,6 +13,8 @@ public class ShapesCreator implements IShapeListObserver{
 	@Override
 	public void update() 
 		{
+	
+		
 			
 			for (ShapeDrawCommand command : shapesListGetter.getShapesList().getAllShapes())
 				{
