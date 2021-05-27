@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import model.selectedList;
 import model.shapesList;
+import model.shapesListGetter;
 import mouse.PointJpaint;
 
 public class SelectCommand implements ICommand {
@@ -27,7 +28,7 @@ public class SelectCommand implements ICommand {
 		
 			
 		
-			for (ShapeDrawCommand shape : shapesList.shapes)
+			for (ShapeDrawCommand shape : shapesListGetter.getShapesList().getAllShapes())
 				{
 						if (	shape.startPoint.getX() < endPoint.getX() && 
 								shape.endPoint.getX() > startPoint.getX() &&

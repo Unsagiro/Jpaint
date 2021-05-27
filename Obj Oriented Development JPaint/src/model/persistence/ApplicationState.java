@@ -3,10 +3,10 @@ package model.persistence;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
+import model.IApplicationState;
+import model.IDialogProvider;
 import model.MouseMode;
 import model.dialogs.DialogProvider;
-import model.interfaces.IApplicationState;
-import model.interfaces.IDialogProvider;
 import view.interfaces.IUiModule;
 
 public class ApplicationState implements IApplicationState {

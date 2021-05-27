@@ -10,11 +10,12 @@ import java.util.Stack;
 import model.ShapeType;
 import model.shapeState;
 import model.shapesList;
-import model.whatShapeStrategy;
+import model.shapesListGetter;
+import model.whatShapeStrategyChoose;
 import model.persistence.ApplicationState;
 import mouse.PointJpaint;
 import view.interfaces.PaintCanvasBase;
-import model.whatShapeStrategy;
+
 
 public class ShapeDrawCommand implements ICommand, IUndoable {
 	 Graphics2D graphics2d;
@@ -42,20 +43,12 @@ public class ShapeDrawCommand implements ICommand, IUndoable {
 	@Override
 	public void run() throws IOException {
 		
-		
-		//graphics2d = paintCanvas.getGraphics2D();
-       // graphics2d.setColor(Color.GREEN);
-      // graphics2d.fillRect((int)startPoint.getX(),(int) startPoint.getY(), width, height);
-		//switch())
-		
-		
-		
-		
-		whatShapeStrategy newStrat = new whatShapeStrategy();
-		//System.out.println(endPoint.toString());
-		newStrat.whatShapeStrategyChoose(paintCanvas, startPoint, endPoint, width, height, shape);
-	
-        shapesList.shapes.add(this);
+		/*
+		graphics2d = paintCanvas.getGraphics2D();
+        graphics2d.setColor(Color.WHITE);
+        graphics2d.fillRect(0,0, 1920, 1080);
+	*/
+		shapesListGetter.getShapesList().addShape(this);
 		CommandHistory.add(this);
 		
 		
@@ -73,44 +66,23 @@ public class ShapeDrawCommand implements ICommand, IUndoable {
 	@Override
 	public void undo() {
 		
-        if (! shapesList.shapes.isEmpty()) 
-        	{
-        		shapesList.shapes.remove(shapesList.shapes.size() - 1 );
-        		System.out.println("i am undo");
-        		graphics2d = paintCanvas.getGraphics2D();
-                graphics2d.setColor(Color.WHITE);
-                graphics2d.fillRect(0,0, 1920, 1080);
-        	}
-        for (ShapeDrawCommand command : shapesList.shapes)
-        		{
-        		whatShapeStrategy newStrat = new whatShapeStrategy();
-        		try {
-					newStrat.whatShapeStrategyChoose(command.paintCanvas,command.startPoint, command.endPoint, command.width, command.height, command.shape);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-        		}
+		graphics2d = paintCanvas.getGraphics2D();
+        graphics2d.setColor(Color.WHITE);
+        graphics2d.fillRect(0,0, 1920, 1080);
+	
+        shapesListGetter.getShapesList().removeShape(this);;
+     
 	}
         
 	
 	
 	@Override
 	public void redo() {
-		/*graphics2d = paintCanvas.getGraphics2D();
-        graphics2d.setColor(Color.GREEN);
-        graphics2d.fillRect((int)startPoint.getX(),(int) startPoint.getY(), width, height);
-        ;*/
-		whatShapeStrategy newStrat = new whatShapeStrategy();
-		System.out.println("i am  redo");
-		try {
-			newStrat.whatShapeStrategyChoose(paintCanvas, startPoint, endPoint, width, height, shape);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-	
-		shapesList.shapes.add(this);
+		
+		graphics2d = paintCanvas.getGraphics2D();
+        graphics2d.setColor(Color.WHITE);
+        graphics2d.fillRect(0,0, 1920, 1080);
+		
+        shapesListGetter.getShapesList().addShape(this);
 	}
 }

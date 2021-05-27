@@ -2,12 +2,10 @@ package model;
 
 import java.io.IOException;
 
-
-import model.interfaces.IShapeStrategy;
 import mouse.PointJpaint;
 import view.interfaces.PaintCanvasBase;
 
-public class whatShapeStrategy {
+public class whatShapeStrategyChoose {
 	
 	public void whatShapeStrategyChoose(PaintCanvasBase paintCanvas, PointJpaint startPoint, PointJpaint endPoint, int width, 
 			int height, shapeState shapeState) throws IOException  {

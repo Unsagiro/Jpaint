@@ -2,7 +2,7 @@ package controller;
 
 import commands.RedoCommand;
 import commands.UndoCommand;
-import model.interfaces.IApplicationState;
+import model.IApplicationState;
 import view.EventName;
 import view.interfaces.IEventCallback;
 import view.interfaces.IUiModule;

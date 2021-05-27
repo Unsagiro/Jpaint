@@ -1,7 +1,7 @@
 package model.dialogs;
 
+import model.IApplicationState;
 import model.ShapeShadingType;
-import model.interfaces.IApplicationState;
 import view.interfaces.IDialogChoice;
 
 public class ChooseShadingTypeDialog implements IDialogChoice<ShapeShadingType> {

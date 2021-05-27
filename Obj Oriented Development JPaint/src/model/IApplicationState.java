@@ -1,9 +1,4 @@
-package model.interfaces;
-
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
-import model.MouseMode;
+package model;
 
 public interface IApplicationState {
     void setActiveShape();

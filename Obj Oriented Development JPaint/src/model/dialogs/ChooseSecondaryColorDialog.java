@@ -1,7 +1,7 @@
 package model.dialogs;
 
+import model.IApplicationState;
 import model.ShapeColor;
-import model.interfaces.IApplicationState;
 import view.interfaces.IDialogChoice;
 
 public class ChooseSecondaryColorDialog implements IDialogChoice<ShapeColor> {

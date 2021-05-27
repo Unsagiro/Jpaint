@@ -3,7 +3,6 @@ package model;
 import java.io.IOException;
 import java.util.UUID;
 
-import model.interfaces.IShapeState;
 import model.persistence.ApplicationState;
 
 

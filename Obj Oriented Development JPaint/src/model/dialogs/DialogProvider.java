@@ -3,9 +3,9 @@ package model.dialogs;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
+import model.IApplicationState;
+import model.IDialogProvider;
 import model.MouseMode;
-import model.interfaces.IApplicationState;
-import model.interfaces.IDialogProvider;
 import view.interfaces.IDialogChoice;
 
 public class DialogProvider implements IDialogProvider {

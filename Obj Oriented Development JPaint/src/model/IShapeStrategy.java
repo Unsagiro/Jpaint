@@ -1,6 +1,5 @@
-package model.interfaces;
+package model;
 
-import model.shapeState;
 import mouse.PointJpaint;
 import view.interfaces.PaintCanvasBase;
 

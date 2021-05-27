@@ -2,9 +2,14 @@ package main;
 
 import controller.IJPaintController;
 import controller.JPaintController;
+import model.IShapeListObserver;
+import model.IShapeListSubject;
 import model.ShapeColor;
 import model.ShapeType;
+import model.ShapesCreator;
 import model.shapeState;
+import model.shapesList;
+import model.shapesListGetter;
 import model.persistence.ApplicationState;
 import mouse.mouseHandler;
 import view.gui.Gui;
@@ -16,14 +21,18 @@ import view.interfaces.IUiModule;
 
 import java.awt.*;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
+
+import commands.ShapeDrawCommand;
 
 public class Main {
 	
 	
     public static void main (String[] args){
-        PaintCanvasBase paintCanvas = new PaintCanvas();
+        
+    	PaintCanvasBase paintCanvas = new PaintCanvas();
         
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
@@ -31,11 +40,23 @@ public class Main {
        
         IJPaintController controller = new JPaintController(uiModule, appState);
         shapeState.stateHolder(appState);
-        mouseHandler mouseHandler = new mouseHandler(paintCanvas);
         
+        mouseHandler mouseHandler = new mouseHandler(paintCanvas);
         paintCanvas.addMouseListener(mouseHandler);
         
         
+        
+        
+        
+        ArrayList<ShapeDrawCommand> OriginalShapesList= new ArrayList<ShapeDrawCommand>();
+        IShapeListSubject shapesListInstance = new shapesList(OriginalShapesList);
+	    IShapeListObserver Creator = new ShapesCreator();
+	    shapesListInstance.registerObserver(Creator);
+       
+        
+	    shapesListGetter shapesGetter = new shapesListGetter(shapesListInstance);
+	    
+	    
         controller.setup();
         
       
@@ -93,4 +114,8 @@ public class Main {
         graphics2d.drawRect(7, 8, 210, 410);
     }*/
 }
-}
+
+	
+		
+	}
+
