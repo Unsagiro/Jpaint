@@ -5,9 +5,11 @@ import controller.JPaintController;
 import model.ClearCanvas;
 import model.IShapeListObserver;
 import model.IShapeListSubject;
+import model.SelectedListGetter;
 import model.ShapeColor;
 import model.ShapeType;
 import model.ShapesCreator;
+import model.selectedList;
 import model.shapeState;
 import model.shapesList;
 import model.shapesListGetter;
@@ -56,9 +58,14 @@ public class Main {
 	    IShapeListObserver Creator = new ShapesCreator();
 	    shapesListInstance.registerObserver(Creator);
        
+	    
+	    ArrayList<ShapeDrawCommand> OriginalSelectedList= new ArrayList<ShapeDrawCommand>();
+        IShapeListSubject selectedListInstance = new selectedList(OriginalSelectedList);
+        IShapeListObserver CreatorSelected = new ShapesCreator();
+	    selectedListInstance.registerObserver(CreatorSelected);
         
 	    shapesListGetter shapesGetter = new shapesListGetter(shapesListInstance);
-	    
+	    SelectedListGetter selectedGetter = new SelectedListGetter(selectedListInstance);
 	    
         controller.setup();
         

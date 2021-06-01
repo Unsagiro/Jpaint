@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import model.ClearCanvas;
+import model.SelectedListGetter;
 import model.selectedList;
 import model.shapesListGetter;
 
@@ -17,8 +18,8 @@ public class DeleteCommand implements IUndoable, ICommand {
 	
 	public void run() throws IOException {
 		
-		deletedShapes.addAll(selectedList.selected);
-		selectedList.selected.removeAll(deletedShapes);
+		deletedShapes.addAll(SelectedListGetter.getSelectedList().getAllShapes());
+		SelectedListGetter.getSelectedList().removeAllShapes(deletedShapes);
 		ClearCanvas.clearCanvas();
 		shapesListGetter.getShapesList().removeAllShapes(deletedShapes);
 		CommandHistory.add(this);
@@ -27,7 +28,7 @@ public class DeleteCommand implements IUndoable, ICommand {
 	@Override
 	public void undo() {
 		
-		selectedList.selected.addAll(deletedShapes);
+		SelectedListGetter.getSelectedList().addAllShapes(deletedShapes);
 		ClearCanvas.clearCanvas();
 		shapesListGetter.getShapesList().addAllShapes(deletedShapes);
 
@@ -35,7 +36,7 @@ public class DeleteCommand implements IUndoable, ICommand {
 
 	@Override
 	public void redo() {
-		selectedList.selected.removeAll(deletedShapes);
+		SelectedListGetter.getSelectedList().removeAllShapes(deletedShapes);
 		ClearCanvas.clearCanvas();
 		shapesListGetter.getShapesList().removeAllShapes(deletedShapes);
 

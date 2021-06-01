@@ -16,6 +16,10 @@ public class whatShapeStrategyChoose {
 	switch(shapeState.shapeShape) {
 	
 	case RECTANGLE:
+		
+		
+		
+		
 		ShapeStrategy = new rectangleStrategy();
 		//System.out.println("rectangle");
 		break;

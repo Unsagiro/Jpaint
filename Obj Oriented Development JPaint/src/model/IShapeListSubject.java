@@ -23,5 +23,7 @@ public interface IShapeListSubject  {
 	 
 	 ArrayList<ShapeDrawCommand> getAllShapes();
 	 
+	 boolean containsObject(ShapeDrawCommand o );
 	 
+	 void clearList();
 }

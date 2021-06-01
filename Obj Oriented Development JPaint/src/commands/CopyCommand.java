@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import model.ClipBoard;
+import model.SelectedListGetter;
 import model.selectedList;
 
 public class CopyCommand implements ICommand, IUndoable {
@@ -16,8 +17,8 @@ public class CopyCommand implements ICommand, IUndoable {
 	public void run() throws IOException {
 		// TODO Auto-generated method stub
 		System.out.println("copy works");
-		thisClipBoard.addAll(selectedList.selected);
-		ClipBoard.clipBoardList.addAll(selectedList.selected);
+		thisClipBoard.addAll(SelectedListGetter.getSelectedList().getAllShapes());
+		ClipBoard.clipBoardList.addAll(SelectedListGetter.getSelectedList().getAllShapes());
 		CommandHistory.add(this);
 		
 	}

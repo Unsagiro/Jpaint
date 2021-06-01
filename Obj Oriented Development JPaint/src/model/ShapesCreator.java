@@ -18,13 +18,27 @@ public class ShapesCreator implements IShapeListObserver{
 			
 			for (ShapeDrawCommand command : shapesListGetter.getShapesList().getAllShapes())
 				{
-				whatShapeStrategyChoose newStrat = new whatShapeStrategyChoose();
-		try {
-			newStrat.whatShapeStrategyChoose(command.paintCanvas,command.startPoint, command.endPoint, command.width, command.height, command.shape);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+				if (SelectedListGetter.getSelectedList().containsObject(command))
+					{
+						OutlineDecorator newOutline = new OutlineDecorator();
+						newOutline.draw(command.paintCanvas,command.startPoint, command.endPoint, command.width, command.height, command.shape);
+					
+					}
+				else 
+						{
+							whatShapeStrategyChoose newStrat = new whatShapeStrategyChoose();
+							try 
+								{
+								newStrat.whatShapeStrategyChoose(command.paintCanvas,command.startPoint, command.endPoint, command.width, command.height, command.shape);
+								} 
+							catch (IOException e) 
+								{
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+						}
+				
+		
 		
 	}
 

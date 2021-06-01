@@ -2,6 +2,8 @@ package commands;
 
 import java.io.IOException;
 
+import model.ClearCanvas;
+import model.SelectedListGetter;
 import model.selectedList;
 import model.shapesList;
 import model.shapesListGetter;
@@ -26,7 +28,7 @@ public class SelectCommand implements ICommand {
 		{
 		// TODO Auto-generated method stub
 		
-			
+		ClearCanvas.clearCanvas();
 		
 			for (ShapeDrawCommand shape : shapesListGetter.getShapesList().getAllShapes())
 				{
@@ -36,9 +38,11 @@ public class SelectCommand implements ICommand {
 								shape.endPoint.getY() > startPoint.getY()
 							)
 								
-						{	selectedList.selected.add(shape);}
+						{	SelectedListGetter.getSelectedList().addShape(shape);}
 								
-						else selectedList.selected.clear(); System.out.println("selected list cleared");
+						else 
+							
+							SelectedListGetter.getSelectedList().clearList();
 						
 			}
 		

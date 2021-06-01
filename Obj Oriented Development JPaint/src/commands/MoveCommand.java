@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import model.ClearCanvas;
+import model.SelectedListGetter;
 import model.selectedList;
 import model.shapeState;
 import model.shapesList;
@@ -41,9 +42,9 @@ public class MoveCommand implements ICommand, IUndoable {
 		y =  (endPoint.getY() - startPoint.getY());
 		
 		
-		selectedList.selected.removeAll(oldSelectedShapesLocal);
+		SelectedListGetter.getSelectedList().removeAllShapes(oldSelectedShapesLocal);
 		
-		 for (ShapeDrawCommand shape : selectedList.selected) // for shape selected
+		 for (ShapeDrawCommand shape : SelectedListGetter.getSelectedList().getAllShapes()) // for shape selected
 			{
 			
 				oldSelectedShapesLocal.add(shape);
@@ -66,11 +67,11 @@ public class MoveCommand implements ICommand, IUndoable {
 		shapesListGetter.getShapesList().addAllShapes(newSelectedShapesLocal);
 				 				
 				 			
-		selectedList.selected.removeAll(oldSelectedShapesLocal);
+		SelectedListGetter.getSelectedList().removeAllShapes(oldSelectedShapesLocal);
 		
 	
 		
-		selectedList.selected.addAll(newSelectedShapesLocal);
+		SelectedListGetter.getSelectedList().addAllShapes(newSelectedShapesLocal);
 
     		
 		CommandHistory.add(this);
@@ -82,24 +83,19 @@ public class MoveCommand implements ICommand, IUndoable {
 	@Override
 	public void undo() {
 		// TODO Auto-generated method stub
-	
+		ClearCanvas.clearCanvas();
 		
 		 for (ShapeDrawCommand newSelShape : newSelectedShapesLocal) // for shape selected
 				{
 					shapesListGetter.getShapesList().removeShape(newSelShape);
-				
+					SelectedListGetter.getSelectedList().removeShape(newSelShape);
 				}
-			
-			
-		graphics2d = paintCanvas.getGraphics2D();
-		graphics2d.setColor(Color.WHITE);
-		graphics2d.fillRect(0,0, 1920, 1080);   // clear canvas
-		
 		
 		
 		 for (ShapeDrawCommand oldSelShape :  oldSelectedShapesLocal)
 				{
 					shapesListGetter.getShapesList().addShape(oldSelShape);
+					SelectedListGetter.getSelectedList().addShape(oldSelShape);
 				}
 		
 		
@@ -110,22 +106,18 @@ public class MoveCommand implements ICommand, IUndoable {
 
 	@Override
 	public void redo() {///////////////main bug is here
-		
+		ClearCanvas.clearCanvas();
 
 			for (ShapeDrawCommand oldSelShape : oldSelectedShapesLocal) // for shape selected
 					{
 						shapesListGetter.getShapesList().removeShape(oldSelShape);
-				
+						SelectedListGetter.getSelectedList().removeShape(oldSelShape);
 					}
-			
-		graphics2d = paintCanvas.getGraphics2D();
-		graphics2d.setColor(Color.WHITE);
-		graphics2d.fillRect(0,0, 1920, 1080);
-		
 			
 			for (ShapeDrawCommand newSelShape :  newSelectedShapesLocal)
 					{
 						shapesListGetter.getShapesList().addShape(newSelShape);
+						SelectedListGetter.getSelectedList().addShape(newSelShape);
 					}
 		
 			

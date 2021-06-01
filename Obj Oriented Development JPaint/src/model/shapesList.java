@@ -71,4 +71,16 @@ public class shapesList implements IShapeListSubject {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean containsObject(ShapeDrawCommand o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void clearList() {
+		// TODO Auto-generated method stub
+		
+	}
 }
