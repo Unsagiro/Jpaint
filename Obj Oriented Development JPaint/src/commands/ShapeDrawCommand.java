@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Stack;
 
+import model.ClearCanvas;
 import model.ShapeType;
 import model.shapeState;
 import model.shapesList;
@@ -43,11 +44,7 @@ public class ShapeDrawCommand implements ICommand, IUndoable {
 	@Override
 	public void run() throws IOException {
 		
-		/*
-		graphics2d = paintCanvas.getGraphics2D();
-        graphics2d.setColor(Color.WHITE);
-        graphics2d.fillRect(0,0, 1920, 1080);
-	*/
+	
 		shapesListGetter.getShapesList().addShape(this);
 		CommandHistory.add(this);
 		
@@ -56,19 +53,11 @@ public class ShapeDrawCommand implements ICommand, IUndoable {
 	}
 
 
-		
-	
-
-
-		
-	
 
 	@Override
 	public void undo() {
 		
-		graphics2d = paintCanvas.getGraphics2D();
-        graphics2d.setColor(Color.WHITE);
-        graphics2d.fillRect(0,0, 1920, 1080);
+		ClearCanvas.clearCanvas();
 	
         shapesListGetter.getShapesList().removeShape(this);;
      
@@ -79,9 +68,7 @@ public class ShapeDrawCommand implements ICommand, IUndoable {
 	@Override
 	public void redo() {
 		
-		graphics2d = paintCanvas.getGraphics2D();
-        graphics2d.setColor(Color.WHITE);
-        graphics2d.fillRect(0,0, 1920, 1080);
+		ClearCanvas.clearCanvas();
 		
         shapesListGetter.getShapesList().addShape(this);
 	}
