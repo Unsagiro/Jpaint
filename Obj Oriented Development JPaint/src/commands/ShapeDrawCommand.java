@@ -12,7 +12,7 @@ import model.ShapeType;
 import model.shapeState;
 import model.shapesList;
 import model.shapesListGetter;
-import model.whatShapeStrategyChoose;
+import model.whatShapeFactory;
 import model.persistence.ApplicationState;
 import mouse.PointJpaint;
 import view.interfaces.PaintCanvasBase;

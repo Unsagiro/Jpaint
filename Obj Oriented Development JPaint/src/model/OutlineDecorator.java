@@ -10,7 +10,12 @@ import view.interfaces.PaintCanvasBase;
 
 public class OutlineDecorator implements IShapeStrategy {
 
+	private IShapeStrategy ShapeStrategy;
 	
+	
+	public OutlineDecorator(IShapeStrategy shapeStrategy) {
+		this.ShapeStrategy = shapeStrategy;
+	}
 	
 	@Override
 	public void draw(PaintCanvasBase paintCanvas, PointJpaint startPoint, PointJpaint endPoint, int width, int height,
@@ -27,14 +32,16 @@ public class OutlineDecorator implements IShapeStrategy {
 		yPoints[1] = ((int)(endPoint.getY())) - 5;
 		yPoints[2] = ((int)(endPoint.getY())) -  5;
 		
-		IShapeStrategy ShapeStrategy = null;
 		
+		
+		
+	
 		
 		switch(shapeState.shapeShape)
 		{
 			case RECTANGLE:
-			System.out.println("working");
-			ShapeStrategy = new rectangleStrategy();
+			
+			
 		  	ShapeStrategy.draw(paintCanvas, startPoint, endPoint, width, height, shapeState);
 			graphics2d.setStroke(dashed);
 	  		graphics2d.setColor(Color.red);
@@ -43,7 +50,7 @@ public class OutlineDecorator implements IShapeStrategy {
 	  		break;
 	  		
 			case ELLIPSE:
-				ShapeStrategy = new ellipsisStrategy();
+				
 				ShapeStrategy.draw(paintCanvas, startPoint, endPoint, width, height, shapeState);
 				graphics2d.setStroke(dashed);
 				graphics2d.setColor(Color.red);
@@ -53,7 +60,7 @@ public class OutlineDecorator implements IShapeStrategy {
 			
 			case TRIANGLE:
 				
-	  			ShapeStrategy = new triangleStrategy();
+	  			
 	  			ShapeStrategy.draw(paintCanvas, startPoint, endPoint, width, height, shapeState);
 	  			graphics2d.setStroke(dashed);
 	  			graphics2d.setColor(Color.red);

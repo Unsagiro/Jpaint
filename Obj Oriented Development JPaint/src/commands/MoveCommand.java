@@ -1,17 +1,12 @@
 package commands;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import model.ClearCanvas;
 import model.SelectedListGetter;
-import model.selectedList;
-import model.shapeState;
-import model.shapesList;
 import model.shapesListGetter;
-import model.whatShapeStrategyChoose;
 import mouse.PointJpaint;
 import view.interfaces.PaintCanvasBase;
 

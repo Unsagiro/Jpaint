@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 public interface IJPaintController {
-    void setup();
+    void setup() throws IOException;
 }

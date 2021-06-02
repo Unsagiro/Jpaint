@@ -7,6 +7,7 @@ import commands.DeleteCommand;
 import commands.PasteCommand;
 import commands.RedoCommand;
 import commands.UndoCommand;
+//import model.GroupShapesComponent;
 import model.IApplicationState;
 import view.EventName;
 import view.interfaces.IEventCallback;
@@ -22,11 +23,11 @@ public class JPaintController implements IJPaintController {
     }
 
     @Override
-    public void setup() {
+    public void setup() throws IOException {
         setupEvents();
     }
 
-    private void setupEvents() {
+    private void setupEvents() throws IOException {
         uiModule.addEvent(EventName.CHOOSE_SHAPE, () -> applicationState.setActiveShape());
         uiModule.addEvent(EventName.CHOOSE_PRIMARY_COLOR, () -> applicationState.setActivePrimaryColor());
         uiModule.addEvent(EventName.CHOOSE_SECONDARY_COLOR, () -> applicationState.setActiveSecondaryColor());
@@ -58,7 +59,9 @@ public class JPaintController implements IJPaintController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		});
+		});/*
+        uiModule.addEvent(EventName.GROUP, () -> { new GroupShapesComponent().group();
+        });*/
         
         
         

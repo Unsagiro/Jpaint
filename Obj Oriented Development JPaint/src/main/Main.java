@@ -24,6 +24,7 @@ import view.interfaces.IUiModule;
 
 import java.awt.*;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
@@ -33,7 +34,7 @@ import commands.ShapeDrawCommand;
 public class Main {
 	
 	
-    public static void main (String[] args){
+    public static void main (String[] args) throws IOException{
         
     	PaintCanvasBase paintCanvas = new PaintCanvas();
         
