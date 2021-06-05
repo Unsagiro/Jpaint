@@ -62,8 +62,7 @@ public class Main {
 	    
 	    ArrayList<ShapeDrawCommand> OriginalSelectedList= new ArrayList<ShapeDrawCommand>();
         IShapeListSubject selectedListInstance = new selectedList(OriginalSelectedList);
-        IShapeListObserver CreatorSelected = new ShapesCreator();
-	    selectedListInstance.registerObserver(CreatorSelected);
+	    selectedListInstance.registerObserver(Creator);
         
 	    shapesListGetter shapesGetter = new shapesListGetter(shapesListInstance);
 	    SelectedListGetter selectedGetter = new SelectedListGetter(selectedListInstance);

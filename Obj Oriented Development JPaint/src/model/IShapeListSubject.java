@@ -19,7 +19,10 @@ public interface IShapeListSubject  {
 	 
 	 void addAllShapes(ArrayList<ShapeDrawCommand> shapes);
 	 
+
+	 
 	 void removeAllShapes(ArrayList<ShapeDrawCommand> shapes);
+	 
 	 
 	 ArrayList<ShapeDrawCommand> getAllShapes();
 	 

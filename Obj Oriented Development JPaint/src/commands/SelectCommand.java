@@ -32,11 +32,25 @@ public class SelectCommand implements ICommand {
 		
 			for (ShapeDrawCommand shape : shapesListGetter.getShapesList().getAllShapes())
 				{
-						if (	shape.startPoint.getX() < endPoint.getX() && 
+						if ((	shape.startPoint.getX() < endPoint.getX() && 
 								shape.endPoint.getX() > startPoint.getX() &&
 								shape.startPoint.getY() < endPoint.getY() &&
-								shape.endPoint.getY() > startPoint.getY()
-							)
+								shape.endPoint.getY() > startPoint.getY())
+								
+							 || (shape.startPoint.getX() > endPoint.getX() && 
+								shape.endPoint.getX() < startPoint.getX() &&
+								shape.startPoint.getY() > endPoint.getY() &&
+								shape.endPoint.getY() < startPoint.getY()) 
+								
+							  || (shape.startPoint.getX() > endPoint.getX() && 
+								shape.endPoint.getX() < startPoint.getX() &&
+								shape.startPoint.getY() < endPoint.getY() &&
+								shape.endPoint.getY() > startPoint.getY())
+							  
+							  || (shape.startPoint.getX() < endPoint.getX() && 
+								  shape.endPoint.getX() > startPoint.getX() &&
+								  shape.startPoint.getY() > endPoint.getY() &&
+								  shape.endPoint.getY() < startPoint.getY()))
 								
 						{	SelectedListGetter.getSelectedList().addShape(shape);}
 								

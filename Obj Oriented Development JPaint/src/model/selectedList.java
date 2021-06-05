@@ -47,6 +47,7 @@ public class selectedList implements IShapeListSubject  {
 		selectedHere.addAll(shapes);
 		notifyObservers();
 	}
+
 	
 	public boolean containsObject(ShapeDrawCommand o )
 	{

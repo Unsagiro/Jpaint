@@ -78,7 +78,7 @@ public class MoveCommand implements ICommand, IUndoable {
 	@Override
 	public void undo() {
 		// TODO Auto-generated method stub
-		ClearCanvas.clearCanvas();
+		
 		
 		 for (ShapeDrawCommand newSelShape : newSelectedShapesLocal) // for shape selected
 				{
@@ -86,7 +86,7 @@ public class MoveCommand implements ICommand, IUndoable {
 					SelectedListGetter.getSelectedList().removeShape(newSelShape);
 				}
 		
-		
+		 ClearCanvas.clearCanvas();
 		 for (ShapeDrawCommand oldSelShape :  oldSelectedShapesLocal)
 				{
 					shapesListGetter.getShapesList().addShape(oldSelShape);
@@ -101,14 +101,14 @@ public class MoveCommand implements ICommand, IUndoable {
 
 	@Override
 	public void redo() {///////////////main bug is here
-		ClearCanvas.clearCanvas();
+		
 
 			for (ShapeDrawCommand oldSelShape : oldSelectedShapesLocal) // for shape selected
 					{
 						shapesListGetter.getShapesList().removeShape(oldSelShape);
 						SelectedListGetter.getSelectedList().removeShape(oldSelShape);
 					}
-			
+			ClearCanvas.clearCanvas();
 			for (ShapeDrawCommand newSelShape :  newSelectedShapesLocal)
 					{
 						shapesListGetter.getShapesList().addShape(newSelShape);

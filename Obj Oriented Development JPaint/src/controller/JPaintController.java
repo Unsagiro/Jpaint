@@ -7,7 +7,8 @@ import commands.DeleteCommand;
 import commands.PasteCommand;
 import commands.RedoCommand;
 import commands.UndoCommand;
-//import model.GroupShapesComponent;
+import model.GroupShapes;
+
 import model.IApplicationState;
 import view.EventName;
 import view.interfaces.IEventCallback;
@@ -59,9 +60,9 @@ public class JPaintController implements IJPaintController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		});/*
-        uiModule.addEvent(EventName.GROUP, () -> { new GroupShapesComponent().group();
-        });*/
+		});
+        uiModule.addEvent(EventName.GROUP, () -> { new GroupShapes().run();
+        });
         
         
         

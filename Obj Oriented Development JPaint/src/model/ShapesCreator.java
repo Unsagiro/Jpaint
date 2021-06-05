@@ -7,7 +7,7 @@ import commands.ShapeDrawCommand;
 
 public class ShapesCreator implements IShapeListObserver{
 
-	
+	public static  boolean switchOffSelected = false;
 	
 	
 	@Override
@@ -17,8 +17,9 @@ public class ShapesCreator implements IShapeListObserver{
 		
 			
 			for (ShapeDrawCommand command : shapesListGetter.getShapesList().getAllShapes())
+				
 				{
-				if (SelectedListGetter.getSelectedList().containsObject(command))
+				if (SelectedListGetter.getSelectedList().containsObject(command) && (switchOffSelected == false))
 					{
 					IShapeStrategy strategy = null;
 					switch(command.shape.shapeShape)
